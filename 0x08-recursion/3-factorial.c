@@ -2,7 +2,8 @@
 #include <string.h>
 
 /**
- * factorial - 
+ * factorial - writes the function which returns the factorial
+ * of a given number
  *
  * *@n : parameter
  *Return: lenfth of s
