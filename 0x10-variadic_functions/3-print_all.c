@@ -1,97 +1,53 @@
 #include "variadic_functions.h"
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 /**
- * func_char - prints char arguement
- * @separator: argument that adds comma and space
- * @args: list of args
- * Return: nothing
- */
-void func_char(char *separator, va_list args)
-{
-	printf("%s%c", separator, va_arg(args, int));
-}
-/**
- * func_int - prints int arguement
- * @separator: argument that adds comma and space
- * @args: list of args
- * Return: nothing
- */
-void func_int(char *separator, va_list args)
-{
-	printf("%s%i", separator, va_arg(args, int));
-}
-/**
- * func_float - prints float arguement
- * @separator: argument that adds comma and space
- * @args: list of args
- * Return: nothing
- */
-void func_float(char *separator, va_list args)
-{
-	printf("%s%f", separator, va_arg(args, double));
-}
-/**
- * func_string - prints char arguement
- * @separator: argument that adds comma and space
- * @args: list of args
- * Return: nothing
- */
-void func_string(char *separator, va_list args)
-{
-	char *f;
-
-	f = va_arg(args, char *);
-
-	if (f == NULL)
-	{
-		printf("(nil)");
-	}
-	printf("%s%s", separator, f);
-}
-
-/**
- * print_all - A function that prints anything
- * @format: print types
- * Return: nothing
+ *  print_all - Prints anything
+ *
+ *  @format: List of args passed to function
+ *
+ *  Return: void
  */
 
 void print_all(const char * const format, ...)
 {
-	prints prints_t[] = {
-	{"c", func_char},
-	{"i", func_int},
-	{"f", func_float},
-	{"s", func_string},
-	{NULL, NULL}
-	};
+	char *str;
+	unsigned int i = 0, commaCheck = 0;
+	va_list ap;
 
+	va_start(ap, format);
 
-	int i, j;
-	va_list args;
-	char *separator;
-
-	separator = "";
-
-	va_start(args, format);
-	i = 0;
-	while (format != NULL && format[i] != '\0')
+	while (format && format[i])
 	{
-		j = 0;
-		while (prints_t[j].type != NULL)
+		if (commaCheck)
+			printf(", ");
+
+		switch (format[i])
 		{
-			if (prints_t[j].type[0] == format[i])
+		case 'c':
+			printf("%c", va_arg(ap, int));
+			break;
+		case 'i':
+			printf("%i", va_arg(ap, int));
+			break;
+		case 'f':
+			printf("%f", va_arg(ap, double));
+			break;
+		case 's':
+			str = va_arg(ap, char*);
+			if (str)
 			{
-				prints_t[j].f(separator, args);
-				separator = ", ";
+				printf("%s", str);
+				break;
 			}
-			j++;
+			printf("(nil)");
+			break;
+		default:
+			commaCheck = 0;
+			i++;
+			continue;
 		}
-		i++;
+		commaCheck = 1,	i++;
 	}
-	printf("\n");
-	va_end(args);
+	putchar('\n');
+	va_end(ap);
 }
