@@ -1,5 +1,5 @@
-#ifndef LIST_H
-#define LIST_H
+#ifndef LISTS_H
+#define LISTS_H
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -28,4 +28,4 @@ int sum_listint(listint_t *head);
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n);
 int delete_nodeint_at_index(listint_t **head, unsigned int index);
 int _putchar(char c);
-#endif /*LIST_H*/
+#endif /*LISTS_H*/
