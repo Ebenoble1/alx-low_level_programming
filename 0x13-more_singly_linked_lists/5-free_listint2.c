@@ -1,4 +1,4 @@
-#include "main.h"
+#include "list.h"
 /**
 * free_listint2 - function
 * @head: ptr to ptr to beginning of list

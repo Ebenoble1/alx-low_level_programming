@@ -1,4 +1,4 @@
-#include "main.h"
+#include "list.h"
 /**
 * sum_listint - function
 * @head: pointer to first node of list

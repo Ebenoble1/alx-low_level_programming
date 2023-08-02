@@ -1,4 +1,4 @@
-#include "main.h"
+#include "list.h"
 /**
 * add_nodeint_end - function
 * @head: double pointer - points to address of ptr to first element

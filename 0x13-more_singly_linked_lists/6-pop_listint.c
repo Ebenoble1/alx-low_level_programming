@@ -1,4 +1,4 @@
-#include "main.h"
+#include "list.h"
 /**
 * pop_listint - function
 * @head: double pointer to 1st node in list

@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_:WQH
+#ifndef LIST_H
+#define LIST_H
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

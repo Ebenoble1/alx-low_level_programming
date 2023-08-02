@@ -1,4 +1,4 @@
-#include "main.h"
+#include "list.h"
 /**
 * delete_nodeint_at_index - function
 * @head: double pointer to first node of list
